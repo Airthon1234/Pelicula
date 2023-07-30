@@ -1,0 +1,23 @@
+package com.example.Peliculas_4.model.bd;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+import lombok.Data;
+
+@Data
+@Entity
+@Table(name="generos")
+public class Generos {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="idgenero")
+	private Integer idgenero;
+	@Column(name="nombregenero")
+	private String nombregenero;
+}
