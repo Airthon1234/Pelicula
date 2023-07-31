@@ -29,20 +29,21 @@ public class SalasController {
 		model.addAttribute("listarsala", salasService.listarSalas());
 		return "sala/frmsala";
 	}
-	@PostMapping("/registrarSalas")
+	@PostMapping("/registrarsalas")
 	@ResponseBody
 	public ResultadoSalasResponse registrarSalas(@RequestBody SalasRequest salasRequest) {
-		String mensaje="Registro de Sala exito!!";
+		String mensaje="Registro de sala correctamente!!";
 		Boolean respuesta=true;
 		try {
-			Salas objsalas= new Salas();
-			if(salasRequest.getIdsala() !=null && salasRequest.getIdsala() > 0);{
-			objsalas.setIdsala(salasRequest.getIdsala());
+			Salas objsala= new Salas();
+			if (salasRequest.getIdsala() !=null && salasRequest.getIdsala() > 0) {
+				objsala.setIdsala(salasRequest.getIdsala());
 			}
-			objsalas.setNombresala(salasRequest.getNombresala());
-			objsalas.setCapacidad(salasRequest.getCapacidad());
+			objsala.setNombresala(salasRequest.getNombresala());
+			objsala.setCapacidad(salasRequest.getCapacidad());
+			salasService.registrarSalas(objsala);
 		} catch (Exception e) {
-			mensaje="Registro de Sala sin exito error!!!";
+			mensaje="registro de sala sin exito error!!!";
 			respuesta=false;
 		}
 		return ResultadoSalasResponse
@@ -54,7 +55,7 @@ public class SalasController {
 	@DeleteMapping("/eliminarSalas")
 	@ResponseBody
 	public ResultadoSalasResponse eliminarSalas(@RequestBody SalasRequest salasRequest) {
-		String mensaje="Registrar sala exito!!";
+		String mensaje="Eliminar sala exito!!";
 		Boolean respuesta=true;
 		try {
 			salasService.eliminarSalas(salasRequest.getIdsala());
