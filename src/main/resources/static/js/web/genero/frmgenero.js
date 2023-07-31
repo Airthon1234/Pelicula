@@ -52,3 +52,38 @@ function listargenero(){
 		}
 	});
 }
+
+$(document).on("click", ".btnactualizargenero", function(){
+	$("#txtnomgenero").val($(this).attr("data-nombregenero"));
+	$("#hddidregistrogenero").val($(this).attr("data-idgenero"));
+	
+	$("#modalgenero").modal("show");
+});
+
+
+$(document).on("click", ".btneliminaridgenero", function(){
+	$("#hddideliminargenero").val("");
+	$("#hddideliminargenero").val($(this).attr("data-idgenero"));
+	$("#mensajeeliminar").text("¿Seguro de Eliminar el "+
+								$(this).attr("data-idgenero")+"?");
+	
+	$("#modalEliminarGenero").modal("show");
+})
+
+
+$(document).on("click", "#btneliminar", function(){
+	$.ajax({
+		type: "DELETE",
+		contentType: 'application/json',
+		url: "eliminarGenero",
+		data: JSON.stringify({
+			idgenero: $("#hddideliminargenero").val()
+		}),
+		success: function(resultado){
+			alert(resultado.mensaje);
+				listargenero();
+			}
+	});
+	
+	$("#modalEliminarGenero").modal("hide");
+})
