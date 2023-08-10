@@ -16,6 +16,7 @@ public class Directores {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="iddirector")
 	private Integer iddirector;
 	
 	@Column(name="nombredirector")

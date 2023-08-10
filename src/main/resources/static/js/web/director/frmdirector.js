@@ -51,7 +51,7 @@ function listardirector() {
           " data-iddirector='" + value.iddirector + "'" +
           "><i class='fas fa-trash'></i></button>" +
           "</td>" +
-          "<tr>"
+          "</tr>"
         );
       });
     }

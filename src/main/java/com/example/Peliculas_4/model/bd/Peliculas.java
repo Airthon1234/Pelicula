@@ -23,7 +23,7 @@ public class Peliculas {
 	@Column(name="titulopelicula")
 	private String titulopelicula;
 	@Column(name="duracion")
-	private Integer duracion;
+	private String duracion;
 	@Column(name="sinopsis")
 	private String sinopsis;
 	
